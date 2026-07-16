@@ -3,7 +3,7 @@ Autonomous SLAM + Nav2 navigation stack for a custom maze environment,
 built on NVIDIA Isaac Sim with a Nova Carter robot and ROS 2 Jazzy.
 
 ## Demo
-![Nova Carter navigating the maze](docs/nav2_demo_gif.gif)
+![Nova Carter navigating the maze](docs/nav2_demo_real.gif)
 
 ## System Architecture
 ![System architecture](docs/nova_carter_system_architecture.png)
