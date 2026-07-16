@@ -1,0 +1,23 @@
+# ROS 2 build artifacts
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Editor stuff
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS junk
+.DS_Store
+
+# Rosbags (usually too big for GitHub)
+*.bag
+*.mcap
