@@ -31,14 +31,14 @@ built on NVIDIA Isaac Sim with a Nova Carter robot and ROS 2 Jazzy.
 
 ### 1. Building the TF tree from scratch across Isaac action graphs
 The map -> odom -> chassis_link -> lidar frame tf tree was manually implemented 
-using Issac Sim's custom nodes like Compute Odometry, Publish Raw Transformation Tree, 
+using Isaac Sim's custom nodes like Compute Odometry, Publish Raw Transformation Tree, 
 and Publish Transformation Tree. Debugged frame priority conflicts where two publishers
 fought over same parent-child frame relationship. Learned that SLAM required both /tf 
 (dynamic transforms like odom -> chassis) and /tf_static (rigid sensor transformations).
 
 ### 2. QoS profile mismatch on /map topic
 Rviz was not receiving map data despite all required topics for 
-slam_tooblox were publishing. Learned that /map topic is published with volatile
+slam_toolbox were publishing. Learned that /map topic is published with volatile
 (only sees new messages) instead of transient local durability (caches messages for 
 late subscribers).
 
@@ -55,16 +55,16 @@ Robot reaches goal but overshoots final heading correction when
 use_rotate_to_heading is set to true. Realizing that when robot drifts out of goal
 and using a tight xy_goal_tolerance (0.01), it re-activates a lookahead point
 creating large angular acceleration to get back on track, creating large overshoot.
-Fixed by loosening tollerances above controller's natural settling error, accounting
+Fixed by loosening tolerances above controller's natural settling error, accounting
 for control loop latency.
 
 ## Debugging Toolkit
 Commands that were consistently useful during development:
-- ros2 topic hz <topic> — confirm topic publish rate
-- ros2 topic info <topic> --verbose — check QoS profiles
-- ros2 run tf2_tools view_frames — visualize TF tree
-- ros2 topic echo <topic> — confirm topic content
+- `ros2 topic hz <topic>` — confirm topic publish rate
+- `ros2 topic info <topic> --verbose` — check QoS profiles
+- `ros2 run tf2_tools view_frames` — visualize TF tree
+- `ros2 topic echo <topic>` — confirm topic content
 
 ## Future Work
-- Using humanoid / quadruped instead of nova carter for adaptable terrain; learn RL localmotion policies
-- April Tag + imu -> sensor fusion for enchanced localization
+- Using humanoid / quadruped instead of nova carter for adaptable terrain; learn RL locomotion policies
+- April Tag + imu -> sensor fusion for enhanced localization
